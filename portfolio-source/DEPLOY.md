@@ -1,104 +1,59 @@
-# 部署到 GitHub Pages（网页上传版）
+# 部署笔记（当前状态，2026-11-17）
 
-不需要装 git，全部在浏览器里完成。全程约 10 分钟。
+## 现状
 
----
+- 仓库：https://github.com/MAUCAT99/portfolio （Public）
+- 代码实际在**子目录** `portfolio-source/` 里（上传时把文件夹本身拖进去了）
+- 根目录有 `.github/workflows/deploy.yml`，已针对子目录配置 `working-directory`
+- Pages：**站点尚未创建**（API `/repos/MAUCAT99/portfolio/pages` 返回 404）
 
-## 第 0 步：先确认仓库是公开的
+## 第一次运行失败的原因
 
-GitHub Pages 在**免费账号**上只能发布**公开仓库**的内容。
-
-- 私有仓库 + 免费账号 → Pages 会报 "Your site is not being published"，怎么点都没用。
-- 所以这个作品集仓库请设为 **Public**。
-
-作品集本来就是给人看的，公开没有损失；但如果里面有不想公开的素材，先把它们从 `public/` 里删掉再上传。
-
----
-
-## 第 1 步：新建仓库
-
-1. 打开 https://github.com/new
-2. **Repository name** 填 `portfolio`（或任意名字，后面 URL 会用到）
-3. 选 **Public**
-4. **不要**勾选 "Add a README file"（我们已经有了，勾了会冲突）
-5. 点 **Create repository**
-
-创建完页面会显示 "Quick setup"，忽略它，直接看第 2 步。
-
----
-
-## 第 2 步：上传文件
-
-1. 解压 `portfolio-source.zip`，得到 `portfolio` 文件夹
-2. 在刚建好的仓库页面点 **uploading an existing file**（或者地址栏加 `/upload/main`）
-3. 把文件夹里**所有内容**（不是文件夹本身）拖进上传框
-   - 包括 `.github` 文件夹。它是隐藏目录，`Ctrl+H` 才看得到；如果拖不进去，见下面的「备选：命令上传」
-4. 等进度条走完，底部 Commit changes 里填一句 `init portfolio`，点 **Commit changes**
-
-> 一次拖太多文件时浏览器可能卡住。如果超过 100 个文件，分两三次提交也行，GitHub 会累加。
-
----
-
-## 第 3 步：打开 Pages
-
-1. 仓库页 → **Settings**（顶部右侧）
-2. 左侧栏 → **Pages**
-3. **Source** 选 **GitHub Actions**（不要选 "Deploy from a branch"）
-4. 不用点 Save，选完即生效
-
----
-
-## 第 4 步：看它构建
-
-1. 点仓库顶部的 **Actions** 标签
-2. 应该能看到一条 `Deploy to GitHub Pages` 的 workflow 正在跑（黄点）
-3. 等 1–3 分钟，变成绿色对勾
-
-如果第一次没自动跑：在该页面点 `Deploy to GitHub Pages` → **Run workflow** → 选 `main` → 运行。
-
----
-
-## 第 5 步：拿到地址
-
-回到 **Settings → Pages**，顶部会显示：
+Run #1（2026-11-17 08:01 UTC）在 `actions/configure-pages@v5` 这一步失败：
 
 ```
-Your site is live at https://<你的用户名>.github.io/portfolio/
+npm install      ✅
+npm run build    ✅
+configure-pages  ❌  ← 这一步
+upload-artifact  ⏭ 跳过
 ```
 
-这个地址就是可以直接发人的链接。
+原因：仓库还没有 Pages 站点，`configure-pages` 默认只做配置、不创建站点。
 
----
+## 修复（两种，选一）
 
-## 出问题时
+### A. 给 workflow 加 enablement（推荐）
 
-| 现象 | 原因 | 处理 |
-| --- | --- | --- |
-| Actions 里没有 workflow | `.github/workflows/deploy.yml` 没上传成功 | 重新上传 `.github` 目录，或改用下面的命令上传 |
-| Actions 红了，报 npm 错误 | 依赖装不上 | 点开日志看具体报错，把日志发我 |
-| Pages 页显示 not published | 仓库还是 Private | 改成 Public（Settings → General → 最底部 Danger Zone → Change visibility） |
-| 打开是 404 | 构建还没完成，或 Source 选错了 | 等一分钟再刷新；确认 Source 是 GitHub Actions |
-| 页面出来了但没样式 | `base` 配置问题 | 我们的 `vite.config.js` 已经是 `base: './'`，正常不会出 |
+`configure-pages` 那一步改成：
 
----
-
-## 备选：用命令上传（如果网页拖拽不顺手）
-
-装好 Git 后，在 `portfolio` 文件夹里执行：
-
-```sh
-git init
-git add .
-git commit -m "init portfolio"
-git branch -M main
-git remote add origin https://github.com/<用户名>/portfolio.git
-git push -u origin main
+```yaml
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 ```
 
-`.gitignore` 已经排除了 `node_modules/`、`dist/`、`.shots/`，不会把依赖推上去。
+提交后会触发新一次运行，这一步会顺手把 Pages 站点创建出来。
 
----
+### B. 先手动创建 Pages 站点再重跑
 
-## 更新内容以后
+设置 → Pages → Source 选 `GitHub Actions` → 保存后再点 Actions → Re-run all jobs。
 
-改完 `src/data.js` 或换完图片，再上传一次（网页端同样操作，或 `git push`），Actions 会自动重新构建部署，**不用再进 Settings**。
+## 怎么判断成功
+
+1. Actions 里两次 job（build / deploy）都变绿；
+2. `https://api.github.com/repos/MAUCAT99/portfolio/pages` 返回 200 而不是 404；
+3. 打开 `https://maucat99.github.io/portfolio/`。
+
+## 临时公网地址（GitHub 修好之前可用）
+
+```powershell
+E:\dsh\tools\cloudflared.exe tunnel --url http://127.0.0.1:8080 --no-autoupdate
+```
+
+会输出一个 `https://xxx.trycloudflare.com` 地址，**进程关掉就失效**，只适合临时给人看。
+
+## 顺便修掉的一个问题
+
+`index.html` 里有几处从模板继承下来的静态兜底文案（首屏姓名、地点、邮箱都是别人的）。
+浏览器里 JS 会覆盖，但爬虫、微信分享预览、禁用 JS 的场景会直接读到这些内容。
+已改成谢添德本人的信息，`dist/index.html` 现在无残留。
