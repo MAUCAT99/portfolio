@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="1200" height="1600" role="img" aria-label="GEO 内容增长系统 封面占位">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#081018"/>
+      <stop offset="55%" stop-color="#16122b"/>
+      <stop offset="100%" stop-color="#08161a"/>
+    </linearGradient>
+    <filter id="soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="130"/></filter>
+    <filter id="grain2"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg2)"/>
+  <ellipse cx="360" cy="360" rx="380" ry="300" fill="#35d6c8" opacity="0.3" filter="url(#soft2)"/>
+  <ellipse cx="920" cy="1200" rx="400" ry="300" fill="#8b7bff" opacity="0.32" filter="url(#soft2)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="2">
+    <circle cx="600" cy="700" r="230"/>
+    <circle cx="600" cy="700" r="330"/>
+    <circle cx="600" cy="700" r="430"/>
+    <path d="M600 270v860M170 700h860"/>
+  </g>
+  <rect width="1200" height="1600" filter="url(#grain2)" opacity="0.14"/>
+  <text x="600" y="860" text-anchor="middle" fill="#eef0f8" fill-opacity="0.95" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="96" font-weight="600" letter-spacing="-1">百言 GEO</text>
+  <text x="600" y="950" text-anchor="middle" fill="#eef0f8" fill-opacity="0.6" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="44" letter-spacing="4">内容增长系统</text>
+  <text x="600" y="1520" text-anchor="middle" fill="#eef0f8" fill-opacity="0.3" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" letter-spacing="2">封面占位 · 换成产品截图更好</text>
+</svg>

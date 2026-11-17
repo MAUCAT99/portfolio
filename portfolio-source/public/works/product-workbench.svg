@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="1200" height="1600" role="img" aria-label="AI 运营工作台 封面占位">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#060d16"/>
+      <stop offset="55%" stop-color="#101a33"/>
+      <stop offset="100%" stop-color="#08131a"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="120"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <ellipse cx="880" cy="380" rx="360" ry="300" fill="#8b7bff" opacity="0.35" filter="url(#soft)"/>
+  <ellipse cx="300" cy="1180" rx="380" ry="260" fill="#35d6c8" opacity="0.28" filter="url(#soft)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2">
+    <rect x="180" y="520" width="840" height="520" rx="18"/>
+    <path d="M180 640h840M420 640v400M780 640v400"/>
+  </g>
+  <rect width="1200" height="1600" filter="url(#grain)" opacity="0.14"/>
+  <text x="600" y="880" text-anchor="middle" fill="#eef0f8" fill-opacity="0.95" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="116" font-weight="600" letter-spacing="-2">AI 运营工作台</text>
+  <text x="600" y="960" text-anchor="middle" fill="#eef0f8" fill-opacity="0.55" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="34" letter-spacing="10">PRODUCT CASE</text>
+  <text x="600" y="1520" text-anchor="middle" fill="#eef0f8" fill-opacity="0.3" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" letter-spacing="2">封面占位 · 换成产品截图更好</text>
+</svg>

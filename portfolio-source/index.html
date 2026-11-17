@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>謝添德 XTD｜AIGC 内容生成 · 編導 · 後期</title>
+    <meta
+      name="description"
+      content="謝添德（XTD／添幀）的作品集：AI 漫剧、AI 短视频、影视短片、商业摄影与三维建模。数字媒体技术 2027 届，杭州。"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <header class="site-header" data-elevated="false">
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="回到首页">
+          <span class="brand-monogram" aria-hidden="true">XTD</span>
+          <span class="brand-text">
+            <span class="brand-name" id="brand-name">謝添德</span>
+            <span class="brand-alias" id="brand-alias">添幀</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="主导航">
+          <a href="#works">作品</a>
+          <a href="#about">关于</a>
+          <a href="#contact">联系</a>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="icon-button"
+            id="theme-toggle"
+            type="button"
+            aria-label="切换明暗主题"
+            title="切换明暗主题"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-moon">
+              <path
+                d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-sun">
+              <circle
+                cx="12"
+                cy="12"
+                r="4.2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M12 2.6v2.2M12 19.2v2.2M4.4 12H2.2M21.8 12h-2.2M6.6 6.6 5 5M19 19l-1.6-1.6M17.4 6.6 19 5M5 19l1.6-1.6"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ============ 首屏 ============ -->
+      <section class="hero" id="top">
+        <div class="hero-backdrop" aria-hidden="true">
+          <img src="./backdrops/atmosphere-01.svg" alt="" />
+          <img src="./backdrops/atmosphere-02.svg" alt="" />
+        </div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="shell hero-inner">
+          <p class="eyebrow reveal">
+            <span class="dot" aria-hidden="true"></span>
+            <span id="hero-location">上海 · 可远程</span>
+          </p>
+          <h1 class="hero-title reveal">
+            <span class="line" id="hero-greeting">你好，我是陈屿</span>
+            <span class="line accent" id="hero-role">设计 × 前端</span>
+          </h1>
+          <p class="hero-lead reveal" id="hero-tagline">
+            我把想法做成能点、能看、能用的东西。过去六年里，我参与过 30+
+            个品牌与产品项目，从第一版线框一直做到上线后的迭代。
+          </p>
+
+          <div class="hero-actions reveal">
+            <a class="button primary" href="#works">
+              看作品
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <a class="button ghost" href="#contact">联系我</a>
+          </div>
+
+          <dl class="hero-stats reveal" id="hero-stats"></dl>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track" id="marquee-track"></div>
+        </div>
+      </section>
+
+      <!-- ============ 精选作品 ============ -->
+      <section class="section" id="works">
+        <div class="shell">
+          <header class="section-head reveal">
+            <p class="section-index">01 — 精选</p>
+            <h2 class="section-title">这三条最能说明我能干什么</h2>
+            <p class="section-sub">
+              一条跑出 1200 万播放的 AI 漫剧、一条自己从素材做到运镜的 AI 短片，还有一条带团队完成的毕业片。
+            </p>
+          </header>
+
+          <div class="featured" id="featured"></div>
+
+          <header class="section-head tight reveal" id="all-works-head">
+            <p class="section-index">02 — 全部作品</p>
+            <h2 class="section-title">全部作品</h2>
+          </header>
+
+          <div class="filters reveal" id="filters" role="group" aria-label="按类型筛选作品"></div>
+          <div class="grid" id="grid" aria-live="polite"></div>
+          <p class="empty-state" id="empty-state" hidden>这个分类下暂时没有作品。</p>
+        </div>
+      </section>
+
+      <!-- ============ 关于 ============ -->
+      <section class="section" id="about">
+        <div class="shell about-grid">
+          <div class="about-media reveal">
+            <div class="portrait placeholder-frame">
+              <img
+                src="./works/portrait.svg"
+                alt="作者头像占位图"
+                width="640"
+                height="760"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="about-body">
+            <p class="section-index reveal">03 — 关于</p>
+            <h2 class="section-title reveal">AI 生成、拍摄、剪辑，一个人跑完整条链路</h2>
+            <div class="prose reveal" id="about-prose"></div>
+
+            <div class="skills reveal" id="skills"></div>
+
+            <ul class="timeline reveal" id="timeline"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 联系 ============ -->
+      <section class="section contact" id="contact">
+        <div class="shell contact-inner reveal">
+          <p class="section-index">04 — 联系</p>
+          <h2 class="contact-title">
+            有实习机会或者项目想聊？<br />
+            直接发邮件给我。
+          </h2>
+          <a class="contact-mail" id="contact-mail" href="mailto:hello@example.com">
+            hello@example.com
+          </a>
+          <div class="socials" id="socials"></div>
+          <a
+            class="button ghost resume-link"
+            href="./resume.pdf"
+            download="谢添德-简历.pdf"
+          >
+            下载简历 PDF
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p>© <span id="year">2026</span> <span id="footer-name">謝添德</span> · <span id="footer-alias">添幀</span></p>
+        <p class="footer-note">用 HTML / CSS / JavaScript 手写，没有模板。</p>
+      </div>
+    </footer>
+
+    <!-- ============ 作品详情弹窗 ============ -->
+    <dialog class="detail" id="detail" aria-labelledby="detail-title">
+      <button class="detail-close" id="detail-close" type="button" aria-label="关闭">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M6 6l12 12M18 6L6 18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <div class="detail-body">
+        <div class="detail-top">
+          <div class="detail-media">
+            <img id="detail-image" src="" alt="" width="1600" height="1000" />
+            <video
+              id="detail-video"
+              class="detail-video"
+              controls
+              playsinline
+              preload="none"
+              hidden
+            ></video>
+          </div>
+          <div class="detail-text">
+            <p class="detail-meta"><span id="detail-category"></span> · <span id="detail-year"></span></p>
+            <p class="detail-metric" id="detail-metric"></p>
+            <h2 id="detail-title"></h2>
+            <p class="detail-subtitle" id="detail-subtitle"></p>
+            <p class="detail-summary" id="detail-summary"></p>
+            <p class="detail-desc" id="detail-desc"></p>
+            <ul class="tags" id="detail-tags"></ul>
+            <div class="detail-links" id="detail-links"></div>
+          </div>
+        </div>
+        <div class="detail-case" id="detail-case"></div>
+        <div class="detail-gallery" id="detail-gallery"></div>
+      </div>
+    </dialog>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

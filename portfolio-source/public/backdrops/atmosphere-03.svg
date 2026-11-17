@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1200" width="1920" height="1200" role="img" aria-label="电影感氛围底图">
+  <defs>
+    <linearGradient id="base-c" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#03040a" />
+      <stop offset="100%" stop-color="#0b0512" />
+    </linearGradient>
+    <radialGradient id="vig-c" cx="0.5" cy="0.46" r="0.78">
+      <stop offset="52%" stop-color="#000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.92" />
+    </radialGradient>
+    
+    <filter id="soft-c-0" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="150" />
+    </filter>
+    <filter id="soft-c-1" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="150" />
+    </filter>
+    <filter id="soft-c-2" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="150" />
+    </filter>
+    
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1200" fill="url(#base-c)" />
+
+  <ellipse cx="260" cy="180" rx="420" ry="300" fill="#ff7bd5"
+      opacity="0.16" filter="url(#soft-c-0)" transform="rotate(-24 260 180)" />
+  <ellipse cx="1180" cy="900" rx="760" ry="360" fill="#2ad9d0"
+      opacity="0.26" filter="url(#soft-c-1)" transform="rotate(8 1180 900)" />
+  <ellipse cx="1700" cy="220" rx="380" ry="280" fill="#6b5cff"
+      opacity="0.3" filter="url(#soft-c-2)" transform="rotate(0 1700 220)" />
+
+  <ellipse cx="1500" cy="560" rx="520" ry="22"
+    fill="#ffd9f4" opacity="0.14" transform="rotate(-32 1500 560)"
+    filter="url(#soft-c-0)" />
+
+  <rect width="1920" height="1200" fill="url(#vig-c)" />
+  <rect width="1920" height="1200" filter="url(#grain)" opacity="0.13" style="mix-blend-mode:screen" />
+</svg>

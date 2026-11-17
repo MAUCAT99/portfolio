@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="毕业片 占位图">
+  
+  <defs>
+    <linearGradient id="g-03" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#05131a"/>
+      <stop offset="58%" stop-color="#0f3440"/>
+      <stop offset="100%" stop-color="#05131a"/>
+    </linearGradient>
+    <radialGradient id="r-03" cx="0.72" cy="0.26" r="0.62">
+      <stop offset="0%" stop-color="#4de1d0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#4de1d0" stop-opacity="0"/>
+    </radialGradient>
+    
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g-03)"/>
+  <rect width="1600" height="1000" fill="url(#r-03)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1.5">
+    <circle cx="800" cy="500" r="420"/>
+    <circle cx="800" cy="500" r="300"/>
+    <circle cx="800" cy="500" r="180"/>
+    <path d="M0 760 C 320 700, 520 860, 800 800 S 1320 690, 1600 750"/>
+  </g>
+  <rect width="1600" height="1000" filter="url(#grain)" opacity="0.16"/>
+  <text x="800" y="470" text-anchor="middle" fill="#ffffff" fill-opacity="0.92" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="150" font-weight="600" letter-spacing="-3">毕业片</text>
+  <text x="800" y="556" text-anchor="middle" fill="#ffffff" fill-opacity="0.55" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="34" letter-spacing="8">WORK 03</text>
+  <text x="800" y="620" text-anchor="middle" fill="#ffffff" fill-opacity="0.3" font-family="Segoe UI, PingFang SC, Microsoft YaHei, sans-serif" font-size="24" letter-spacing="2">占位图 · 替换 public/works/work-03.jpg</text>
+</svg>
